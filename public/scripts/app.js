@@ -11,42 +11,49 @@ var app = {
 var count = 0;
 
 var addOne = function addOne() {
-    console.log("addOne");
+    count++;
+    renderCounterApp();
 };
 
 var subtractOne = function subtractOne() {
-    console.log("subtractOne");
+    count--;
+    renderCounterApp();
 };
 
 var reset = function reset() {
-    console.log("reset");
+    count = 0;
+    renderCounterApp();
 };
 
-var templateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        "Count: ",
-        count
-    ),
-    React.createElement(
-        "button",
-        { onClick: addOne },
-        "+1"
-    ),
-    React.createElement(
-        "button",
-        { onClick: subtractOne },
-        "-1"
-    ),
-    React.createElement(
-        "button",
-        { onClick: reset },
-        "Reset"
-    )
-);
-
 var appRoot = document.getElementById('app');
-ReactDOM.render(templateTwo, appRoot);
+
+var renderCounterApp = function renderCounterApp() {
+    var templateTwo = React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h1",
+            null,
+            "Count: ",
+            count
+        ),
+        React.createElement(
+            "button",
+            { onClick: addOne },
+            "+1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: subtractOne },
+            "-1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: reset },
+            "Reset"
+        )
+    );
+    ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();
