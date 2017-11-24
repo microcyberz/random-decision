@@ -2,39 +2,47 @@ console.log("App.js is running");
 
 const app = {
     title: "Random Decision",
-    subtutle: "Put your life in computer's hand",
-    options: ['one', 'two']
+    subtitle: "Put your life in computer's hand",
+    options: []
+};
+
+const onFormSubmit = (e) =>{
+    e.preventDefault(); //stop sending data in link and reloading whole page
+    const option = e.target.elements.option.value; // the input value of form
+    if(option){
+        app.options.push(option); 
+        e.target.elements.option.value = '';
+        render();
+    }
 }
 
-let count = 0;
-
-const addOne = () => {
-    count++;
-    renderCounterApp(); 
-}
-
-const subtractOne = () => {
-    count--;
-    renderCounterApp(); 
-}
-
-const reset = () => {
-    count = 0;
-    renderCounterApp(); 
+const onRemoveAll = () => {
+    app.options = [];
+    render();
 }
 
 const appRoot = document.getElementById('app');
 
-const renderCounterApp = () => {
-    const templateTwo = (
+const render = () => {
+    const template = (
         <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={subtractOne}>-1</button>
-            <button onClick={reset}>Reset</button>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? "Here are your options": "No Options"}</p>
+            <p>{app.options.length}</p>
+            <button onClick={onRemoveAll}>Remove All</button>
+            <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ol>
+    
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Options</button>
+            </form>
         </div>
     );
-    ReactDOM.render(templateTwo, appRoot); 
-};
+    ReactDOM.render(template, appRoot);    
+}
 
-renderCounterApp();
+render();
