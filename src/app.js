@@ -1,40 +1,33 @@
 console.log("App.js is running");
 
-var app = {
+const app = {
     title: "Random Decision",
     subtutle: "Put your life in computer's hand",
     options: ['one', 'two']
 }
 
-// JSX - Javascript XML
-var template = (
-<div>
-    <h1>{app.title}</h1>
-    {app.subtutle && <p>{app.subtutle}</p>}
-    <p>{app.options && app.options.length > 0 ?'Here are your options':'No options'}</p>
-    <ol>
-        <li>Item one</li>    
-        <li>Item two</li>    
-    </ol>
-</div>
-);
+let count = 0;
 
-var user = {
-    name: "Ahmad",
-    age: 22,
-    location: 'Mansehra'
+const addOne = () => {
+    console.log("addOne");
 }
 
-function getLocation(location){
-    return (location)?<p>{location}</p>:undefined;
+const subtractOne = () => {
+    console.log("subtractOne");
 }
 
-var templateTwo = (
+const reset = () => {
+    console.log("reset");
+}
+
+const templateTwo = (
     <div>
-        <h1>{user.name?user.name:'Anonymous'}</h1>
-        {(user.age && user.age > 18) && <p>{user.age}</p>}
-        {getLocation(user.location)}
+        <h1>Count: {count}</h1>
+        <button onClick={addOne}>+1</button>
+        <button onClick={subtractOne}>-1</button>
+        <button onClick={reset}>Reset</button>
     </div>
 );
-var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot); 
+
+const appRoot = document.getElementById('app');
+ReactDOM.render(templateTwo, appRoot); 
