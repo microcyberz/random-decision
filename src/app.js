@@ -1,3 +1,17 @@
+// App main component
+class RandomDecision extends React.Component{
+    render(){
+        return (
+        <div>
+            <Header />
+            <Action />
+            <Options />
+            <AddOption />
+        </div>
+        )};
+}
+
+
 
 // HEADER
 class Header extends React.Component{
@@ -28,12 +42,25 @@ class Options extends React.Component{
     render(){
         return (
             <ol>
-                <li>Option 1</li>
-                <li>Option 2</li>
+                <Option />
             </ol>
         );
     }
 }
+
+// Option 
+class Option extends React.Component{
+    render(){
+        return(
+            <div>
+            <li>Option 1</li>
+            <li>Option 2</li>
+            <li>Option 3</li>
+            </div>
+        );
+    }
+}
+
 
 // ADDING OPTIONS TO SELECT FROM
 class AddOption extends React.Component{
@@ -47,13 +74,5 @@ class AddOption extends React.Component{
     }
 }
 
-const jsx = (
-    <div>
-        <Header />
-        <Action />
-        <Options />
-        <AddOption />
-    </div>
-);
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<RandomDecision />, document.getElementById('app'));
