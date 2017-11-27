@@ -1,61 +1,59 @@
-console.log("App.js is running");
 
-const app = {
-    title: "Random Decision",
-    subtitle: "Put your life in computer's hand",
-    options: []
-};
-
-
-// When item is inserted
-const onFormSubmit = (e) =>{
-    e.preventDefault(); //stop sending data in link and reloading whole page
-    const option = e.target.elements.option.value; // the input value of form
-    if(option){
-        app.options.push(option); 
-        e.target.elements.option.value = '';
-        render();
+// HEADER
+class Header extends React.Component{
+    render(){
+       return (
+        <div>
+            <h1>Random Decision</h1>
+            <h2>Put your life in the hands of a computer</h2>
+        </div>
+       );
     }
 }
 
-// Making the list empty
-const onRemoveAll = () => {
-    app.options = [];
-    render();
+
+// ACTION 
+class Action extends React.Component{
+    render(){
+        return (
+            <div>
+                <button>What should I do?</button>
+            </div>
+        );
+    }
 }
 
-// Picking Random Option
-const onMakeDecision = () => {
-    const randomNum = Math.floor(Math.random() * app.options.length);
-    const option = app.options[randomNum];
-    console.log(option);
-};
-const appRoot = document.getElementById('app');
-
-// Rendering JSX on the page
-const render = () => {
-    const template = (
-        <div>
-            <h1>{app.title}</h1>
-            {app.subtitle && <p>{app.subtitle}</p>}
-            <p>{app.options.length > 0 ? "Here are your options": "No Options"}</p>
-
-            <button disabled={app.options.length === 0} onClick={onMakeDecision}>What Should I Do?</button>
-            <button disabled={app.options.length === 0} onClick={onRemoveAll}>Remove All</button>
-            
+// LIST OF OPTIONS
+class Options extends React.Component{
+    render(){
+        return (
             <ol>
-                {
-                    app.options.map((item) => <li key={item}>{item}</li>)
-                }
+                <li>Option 1</li>
+                <li>Option 2</li>
             </ol>
-    
-            <form onSubmit={onFormSubmit}>
+        );
+    }
+}
+
+// ADDING OPTIONS TO SELECT FROM
+class AddOption extends React.Component{
+    render(){
+        return (
+            <form>
                 <input type="text" name="option"/>
                 <button>Add Options</button>
             </form>
-        </div>
-    );
-    ReactDOM.render(template, appRoot);    
+        );
+    }
 }
 
-render();
+const jsx = (
+    <div>
+        <Header />
+        <Action />
+        <Options />
+        <AddOption />
+    </div>
+);
+
+ReactDOM.render(jsx, document.getElementById('app'));
