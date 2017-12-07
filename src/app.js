@@ -7,7 +7,7 @@ class Mohsin extends React.Component{
 // App main component
 class RandomDecision extends React.Component{
     render(){
-        const title = "Random Decision";
+        const title = "MEY MEY";
         const subtitle = "Put your life in the hands of a computer";
         const options = ["option a","option c","option b"]
         return (
@@ -74,7 +74,7 @@ class Option extends React.Component{
         );
     }
 }
-
+``
 
 // ADDING OPTIONS TO SELECT FROM
 class AddOption extends React.Component{
