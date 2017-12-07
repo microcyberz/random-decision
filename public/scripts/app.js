@@ -8,9 +8,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var Mohsin = function (_React$Component) {
+    _inherits(Mohsin, _React$Component);
+
+    function Mohsin() {
+        _classCallCheck(this, Mohsin);
+
+        return _possibleConstructorReturn(this, (Mohsin.__proto__ || Object.getPrototypeOf(Mohsin)).apply(this, arguments));
+    }
+
+    _createClass(Mohsin, [{
+        key: "render",
+        value: function render() {}
+    }]);
+
+    return Mohsin;
+}(React.Component);
 // App main component
-var RandomDecision = function (_React$Component) {
-    _inherits(RandomDecision, _React$Component);
+
+
+var RandomDecision = function (_React$Component2) {
+    _inherits(RandomDecision, _React$Component2);
 
     function RandomDecision() {
         _classCallCheck(this, RandomDecision);
@@ -41,8 +59,8 @@ var RandomDecision = function (_React$Component) {
 // HEADER
 
 
-var Header = function (_React$Component2) {
-    _inherits(Header, _React$Component2);
+var Header = function (_React$Component3) {
+    _inherits(Header, _React$Component3);
 
     function Header() {
         _classCallCheck(this, Header);
@@ -76,8 +94,8 @@ var Header = function (_React$Component2) {
 // ACTION 
 
 
-var Action = function (_React$Component3) {
-    _inherits(Action, _React$Component3);
+var Action = function (_React$Component4) {
+    _inherits(Action, _React$Component4);
 
     function Action() {
         _classCallCheck(this, Action);
@@ -86,6 +104,11 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
+        key: "handlePick",
+        value: function handlePick() {
+            alert('handlePick');
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
@@ -93,7 +116,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     "button",
-                    null,
+                    { onClick: this.handlePick },
                     "What should I do?"
                 )
             );
@@ -106,8 +129,8 @@ var Action = function (_React$Component3) {
 // LIST OF OPTIONS
 
 
-var Options = function (_React$Component4) {
-    _inherits(Options, _React$Component4);
+var Options = function (_React$Component5) {
+    _inherits(Options, _React$Component5);
 
     function Options() {
         _classCallCheck(this, Options);
@@ -116,11 +139,21 @@ var Options = function (_React$Component4) {
     }
 
     _createClass(Options, [{
+        key: "handleRemoveAll",
+        value: function handleRemoveAll() {
+            alert("removed");
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
                 null,
+                React.createElement(
+                    "button",
+                    { onClick: this.handleRemoveAll },
+                    "Remove All"
+                ),
                 this.props.options.map(function (option) {
                     return React.createElement(Option, { key: option, optionText: option });
                 })
@@ -134,8 +167,8 @@ var Options = function (_React$Component4) {
 // Option 
 
 
-var Option = function (_React$Component5) {
-    _inherits(Option, _React$Component5);
+var Option = function (_React$Component6) {
+    _inherits(Option, _React$Component6);
 
     function Option() {
         _classCallCheck(this, Option);
@@ -160,8 +193,8 @@ var Option = function (_React$Component5) {
 // ADDING OPTIONS TO SELECT FROM
 
 
-var AddOption = function (_React$Component6) {
-    _inherits(AddOption, _React$Component6);
+var AddOption = function (_React$Component7) {
+    _inherits(AddOption, _React$Component7);
 
     function AddOption() {
         _classCallCheck(this, AddOption);
@@ -170,16 +203,31 @@ var AddOption = function (_React$Component6) {
     }
 
     _createClass(AddOption, [{
+        key: "handleAddOption",
+        value: function handleAddOption(e) {
+            e.preventDefault();
+
+            var option = e.target.elements.option.value.trim();
+
+            if (option) {
+                alert(option);
+            }
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
-                "form",
+                "div",
                 null,
-                React.createElement("input", { type: "text", name: "option" }),
                 React.createElement(
-                    "button",
-                    null,
-                    "Add Options"
+                    "form",
+                    { onSubmit: this.handleAddOption },
+                    React.createElement("input", { type: "text", name: "option" }),
+                    React.createElement(
+                        "button",
+                        { onClick: "handleAddOption" },
+                        "Add Option"
+                    )
                 )
             );
         }
