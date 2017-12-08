@@ -11,6 +11,18 @@ class RandomDecision extends React.Component{
         };
     }
 
+    componentDidMount(){
+        console.log("Fetching data");
+    }
+
+    componentDidUpdate(){
+        console.log("saving data");
+    }
+
+    componentWillUnmount(){
+        console.log("Component Will Unmount");
+    }
+
     // remove all
     handleDeleteOptions(){
         this.setState(()=> ({options: []}));          

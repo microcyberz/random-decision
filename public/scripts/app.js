@@ -27,10 +27,25 @@ var RandomDecision = function (_React$Component) {
         return _this;
     }
 
-    // remove all
-
-
     _createClass(RandomDecision, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            console.log("Fetching data");
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            console.log("saving data");
+        }
+    }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+            console.log("Component Will Unmount");
+        }
+
+        // remove all
+
+    }, {
         key: "handleDeleteOptions",
         value: function handleDeleteOptions() {
             this.setState(function () {
