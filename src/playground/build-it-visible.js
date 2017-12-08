@@ -1,4 +1,3 @@
-console.log('Running....')
 class VisibilityToggle extends React.Component{
     constructor(props){
         super(props);
@@ -14,7 +13,7 @@ class VisibilityToggle extends React.Component{
                 visibility: !prevState.visibility
             }
         });
-        this.render();
+        
     }
     render(){
         return (
