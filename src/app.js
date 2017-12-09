@@ -1,6 +1,6 @@
 // import "./utils";
 import {square, add} from "./utils";
-import {isAdult, canDrink} from "./person";
+import isSenior, {isAdult, canDrink} from "./person";
 
 console.log("pp.js is Running...");
 
@@ -11,3 +11,4 @@ console.log(add(5,6));
 console.log("====== PERSON ======");
 console.log(isAdult(21));
 console.log(canDrink(21));
+console.log(isSenior(65));
